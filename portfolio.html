@@ -67,8 +67,14 @@ nav.scrolled{background:var(--bg-2);box-shadow:0 6px 24px rgba(0,0,0,.4);padding
 .nav-links a.btn-pill:hover{background:var(--green-d);color:#ffffff;}
 .menu-toggle{display:none;background:none;border:none;color:var(--ink);font-size:1.6rem;cursor:pointer;}
 .nav-right{display:flex;align-items:center;gap:16px;}
-.theme-toggle{background:var(--card);border:1px solid var(--brd);color:var(--ink);width:40px;height:40px;border-radius:11px;cursor:pointer;font-size:1rem;display:grid;place-items:center;transition:transform .35s,background .3s,border-color .3s;}
-.theme-toggle:hover{transform:rotate(18deg) scale(1.06);border-color:var(--green);}
+.theme-toggle{position:relative;width:44px;height:44px;border-radius:50%;background:none;border:none;cursor:pointer;display:grid;place-items:center;overflow:hidden;transition:transform .3s ease;}
+.theme-toggle:hover{transform:scale(1.14);}
+.theme-toggle svg{position:absolute;width:24px;height:24px;color:#93a9ea;transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .35s ease;}
+html[data-theme="light"] .theme-toggle svg{color:#2f478c;}
+.theme-toggle .tt-sun{opacity:0;transform:rotate(-90deg) scale(.4);}
+.theme-toggle .tt-moon{opacity:1;transform:none;}
+html[data-theme="light"] .theme-toggle .tt-sun{opacity:1;transform:none;}
+html[data-theme="light"] .theme-toggle .tt-moon{opacity:0;transform:rotate(90deg) scale(.4);}
 /* light-theme fine-tuning */
 html[data-theme="light"] .hero-illus g[fill="#191a24"]{fill:#e9edf6;stroke:rgba(22,32,60,.14);}
 html[data-theme="light"] .ap-bg{background:radial-gradient(115% 90% at 50% 32%,rgba(63,92,174,.18),rgba(225,231,244,.55) 55%,transparent 80%);}
@@ -260,7 +266,10 @@ footer .copy{color:var(--dim);font-size:.8rem;}
         <a href="#portfolio">Portfolio</a>
         <a href="#contact" class="btn-pill">Contact</a>
       </div>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle light / dark theme" title="Toggle light / dark">🌙</button>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle light / dark theme" title="Toggle light / dark">
+        <svg class="tt-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="tt-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
       <button class="menu-toggle" id="menuToggle">☰</button>
     </div>
   </div>
@@ -503,7 +512,7 @@ footer .copy{color:var(--dim);font-size:.8rem;}
 <script>
 /* theme toggle */
 const themeToggle=document.getElementById('themeToggle'),root=document.documentElement;
-function setTheme(t){root.setAttribute('data-theme',t);themeToggle.textContent=t==='light'?'☀️':'🌙';localStorage.setItem('sv-theme',t);}
+function setTheme(t){root.setAttribute('data-theme',t);localStorage.setItem('sv-theme',t);}
 setTheme(localStorage.getItem('sv-theme')||'dark');
 themeToggle.onclick=()=>setTheme(root.getAttribute('data-theme')==='light'?'dark':'light');
 
