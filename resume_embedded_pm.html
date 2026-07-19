@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sriram Venkataraju — Project Manager (Embedded)</title>
+<style>
+  :root{
+    --navy:#2e3a5f;
+    --navy-accent:#3a4a7a;
+    --blue:#3f5aa6;
+    --ink:#2c2c2c;
+    --muted:#6d6d6d;
+    --line:#d9d9d9;
+    --bar-bg:#e4e4e4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Segoe UI",Arial,Helvetica,sans-serif;
+    color:var(--ink);
+    font-size:13.0px;
+    line-height:1.4;
+    background:#fff;
+  }
+  .page{width:210mm;height:296mm;margin:0 auto;background:#fff;display:flex;flex-direction:column;overflow:hidden;}
+
+  /* ---------- HEADER ---------- */
+  header{
+    background:var(--navy);
+    color:#fff;
+    padding:16px 34px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .head-left{flex:1;}
+  .name{
+    font-size:32.4px;
+    font-weight:800;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:#eef1f8;
+  }
+  .name span{color:#aab3cc;font-weight:400;}
+  .role{
+    font-size:14.0px;
+    font-weight:600;
+    color:#aab3cc;
+    margin:2px 0 10px;
+    letter-spacing:.5px;
+  }
+  .contact{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:4px 30px;
+    max-width:520px;
+    font-size:12.4px;
+  }
+  .contact div{display:flex;align-items:center;gap:7px;color:#dfe3ef;}
+  .contact .ic{color:#aab3cc;width:14px;text-align:center;}
+  .photo{
+    width:118px;height:118px;border-radius:50%;
+    object-fit:cover;margin-left:24px;flex:none;
+    border:3px solid #46567f;background:#c6ccdc;
+  }
+
+  /* ---------- BODY ---------- */
+  .body{display:grid;grid-template-columns:1.55fr 1fr;gap:32px;padding:30px 34px 34px;flex:1;min-height:0;}
+  .col-left,.col-right{display:flex;flex-direction:column;justify-content:space-between;}
+
+  .sec-title{
+    font-size:15.1px;font-weight:800;text-transform:uppercase;
+    letter-spacing:.6px;color:var(--ink);
+    border-bottom:2px solid var(--navy);
+    padding-bottom:4px;margin-bottom:12px;
+  }
+  section{margin-bottom:0;}
+
+  .summary{color:#444;font-size:12.4px;line-height:1.45;}
+
+  /* experience */
+  .job{margin-bottom:12px;}
+  .job:last-child{margin-bottom:0;}
+  .job-title{font-size:13.5px;color:#555;font-weight:600;}
+  .job-company{font-size:13.5px;color:var(--blue);font-weight:700;margin-top:1px;}
+  .job-meta{display:flex;gap:18px;color:var(--muted);font-size:11.4px;margin:2px 0 5px;}
+  .job-meta span{display:flex;align-items:center;gap:5px;}
+  ul.points{list-style:none;}
+  ul.points li{position:relative;padding-left:14px;margin-bottom:2px;font-size:11.8px;line-height:1.4;color:#3a3a3a;}
+  ul.points li::before{content:"";position:absolute;left:2px;top:6px;width:4px;height:4px;border-radius:50%;background:var(--blue);}
+
+  /* education */
+  .edu{margin-bottom:11px;}
+  .edu-deg{font-weight:700;font-size:13.0px;color:var(--ink);}
+  .edu-school{color:var(--blue);font-weight:600;font-size:12.4px;}
+  .edu-meta{display:flex;gap:18px;color:var(--muted);font-size:11.4px;margin-top:2px;}
+  .edu-meta span{display:flex;align-items:center;gap:5px;}
+
+  /* languages */
+  .langs{display:grid;grid-template-columns:1fr 1fr;gap:12px 22px;}
+  .lang-name{font-weight:600;font-size:12.4px;}
+  .lang-level{font-size:10.8px;color:var(--muted);margin-bottom:4px;}
+  .bar{height:7px;background:var(--bar-bg);border-radius:4px;overflow:hidden;}
+  .bar>i{display:block;height:100%;background:var(--navy);border-radius:4px;}
+
+  /* ---------- RIGHT COLUMN ---------- */
+  .ach{margin-bottom:8px;padding-bottom:8px;border-bottom:1px dashed var(--line);}
+  .ach:last-child{border-bottom:none;}
+  .ach .ic{display:none;}
+  .ach-title{font-weight:700;font-size:12.4px;color:var(--ink);}
+  .ach-desc{font-size:11.4px;color:#555;line-height:1.45;}
+
+  .skills{display:flex;flex-wrap:wrap;gap:7px 8px;}
+  .skill{
+    font-size:11.4px;color:#333;padding:3px 9px;
+    background:#eef1f8;border-radius:4px;
+  }
+
+  .course{margin-bottom:10px;}
+  .course-title{font-weight:700;font-size:12.4px;}
+  .course-sub{font-size:11.4px;color:#555;}
+
+  .interest{display:flex;gap:11px;margin-bottom:11px;}
+  .interest .ic{font-size:17.3px;color:var(--navy);width:22px;text-align:center;flex:none;}
+  .interest-title{font-weight:700;font-size:12.4px;}
+  .interest-desc{font-size:11.4px;color:#555;line-height:1.45;}
+
+  @media print{
+    body{font-size:13.0px;}
+    .page{width:auto;min-height:auto;margin:0;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="head-left">
+      <div class="name">SRIRAM <span>VENKATARAJU</span></div>
+      <div class="role">Project Manager – Embedded &amp; IoT Systems</div>
+      <div class="contact">
+        <div><span class="ic">&#9742;</span> +91 99767 10737</div>
+        <div><span class="ic">&#9993;</span> sriram8523@gmail.com</div>
+        <div><span class="ic">&#128279;</span> linkedin.com/in/sriram-venkataraju</div>
+        <div><span class="ic">&#128205;</span> Chennai, Tamil Nadu</div>
+      </div>
+    </div>
+    <img class="photo" src="profile.jpg" alt="Sriram Venkataraju">
+  </header>
+
+  <div class="body">
+    <!-- LEFT -->
+    <div class="col-left">
+
+      <section>
+        <div class="sec-title">Summary</div>
+        <p class="summary">
+          Embedded &amp; IoT project professional with 4+ years spanning firmware development and
+          Industry 4.0 project delivery. Experienced in building firmware for industrial IoT devices
+          (ESP32, STM32, Raspberry Pi) with protocols such as BLE, Modbus, MQTT and OPC UA, and in
+          managing cross-functional automation projects end to end. Combines deep embedded expertise
+          with project-management and business-analysis skills backed by an MBA in Business Analytics.
+        </p>
+      </section>
+
+      <section>
+        <div class="sec-title">Experience</div>
+
+        <div class="job">
+          <div class="job-title">Assistant Manager – Projects (Industry 4.0 / IoT)</div>
+          <div class="job-company">Suja Shoei Industries Pvt. Ltd.</div>
+          <div class="job-meta"><span>&#128197; Nov 2024 – Present</span><span>&#128205; Chennai</span></div>
+          <ul class="points">
+            <li>Lead Industry 4.0 and digital-transformation projects across manufacturing operations.</li>
+            <li>Drive M2M data-collection and ERP-integration projects for real-time machine visibility.</li>
+            <li>Evaluate and manage IoT, MES, OEE, robotic-automation and vision-inspection solutions.</li>
+            <li>Prepare URS, feasibility studies and technical proposals; track scope, risks and milestones.</li>
+            <li>Coordinate automation vendors, ERP partners, software teams and internal stakeholders.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-title">Project Engineer – Firmware</div>
+          <div class="job-company">Marlensoft Pvt. Ltd. (A unit of Kern &amp; Sohn GmbH)</div>
+          <div class="job-meta"><span>&#128197; Feb 2022 – Mar 2024</span><span>&#128205; Chennai</span></div>
+          <ul class="points">
+            <li>Developed firmware for smart IoT devices for weighing scales and precision instruments.</li>
+            <li>Acquired data from scales via RS232 / USB / Bluetooth Classic and streamed it to apps over BLE.</li>
+            <li>Built medical-scale firmware consolidating scale + barcode + RTC data into JSON, posting to server and storing locally via SPIFFS.</li>
+            <li>Implemented BLE-based device provisioning (Wi-Fi SSID/password, server config).</li>
+            <li>Interfaced sensors over I2C, SPI and UART; root-caused defects and ensured compliance.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <div class="sec-title">Education</div>
+        <div class="edu">
+          <div class="edu-deg">MBA – Business Analytics</div>
+          <div class="edu-school">SASTRA Deemed University, Tanjore</div>
+          <div class="edu-meta"><span>&#128197; 2023 – 2025</span><span>&#127891; CGPA 8.5</span></div>
+        </div>
+        <div class="edu">
+          <div class="edu-deg">B.E. – Electronics &amp; Communication Engineering</div>
+          <div class="edu-school">St. Joseph's Institute of Technology, Chennai</div>
+          <div class="edu-meta"><span>&#128197; 2017 – 2021</span><span>&#127891; CGPA 7.42</span></div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="col-right">
+
+      <section>
+        <div class="sec-title">Key Achievements</div>
+        <div class="ach">
+          <div class="ic">&#9889;</div>
+          <div>
+            <div class="ach-title">End-to-End IoT Firmware</div>
+            <div class="ach-desc">Delivered production firmware for IoT weighing devices from prototype to deployment.</div>
+          </div>
+        </div>
+        <div class="ach">
+          <div class="ic">&#127760;</div>
+          <div>
+            <div class="ach-title">Global OEM Collaboration</div>
+            <div class="ach-desc">Worked directly with Kern &amp; Sohn (Germany) and international automation suppliers.</div>
+          </div>
+        </div>
+        <div class="ach">
+          <div class="ic">&#127891;</div>
+          <div>
+            <div class="ach-title">Industry 4.0 Project Delivery</div>
+            <div class="ach-desc">Led M2M, ERP-integration and vision-inspection projects across the shop floor.</div>
+          </div>
+        </div>
+        <div class="ach">
+          <div class="ic">&#129302;</div>
+          <div>
+            <div class="ach-title">National Robotics Competitions</div>
+            <div class="ach-desc">Participated in multiple state- and national-level robotics competitions.</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="sec-title">Skills</div>
+        <div class="skills">
+          <span class="skill">Embedded Firmware</span>
+          <span class="skill">C / C++</span>
+          <span class="skill">ESP32 / STM32</span>
+          <span class="skill">Arduino / Raspberry Pi</span>
+          <span class="skill">RTOS</span>
+          <span class="skill">BLE</span>
+          <span class="skill">Modbus RTU/TCP</span>
+          <span class="skill">MQTT</span>
+          <span class="skill">OPC UA</span>
+          <span class="skill">I2C / SPI / UART</span>
+          <span class="skill">Node.js</span>
+          <span class="skill">IIoT / Industry 4.0</span>
+          <span class="skill">ERP / MES / OEE</span>
+          <span class="skill">Project Management</span>
+          <span class="skill">Requirement Gathering</span>
+        </div>
+      </section>
+
+      <section>
+        <div class="sec-title">Training / Courses</div>
+        <div class="course">
+          <div class="course-title">C &amp; C++ Programming</div>
+          <div class="course-sub">Professional certification</div>
+        </div>
+        <div class="course">
+          <div class="course-title">Industrial IoT &amp; Communication Protocols</div>
+          <div class="course-sub">MQTT, Modbus RTU/TCP, OPC UA, BLE</div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

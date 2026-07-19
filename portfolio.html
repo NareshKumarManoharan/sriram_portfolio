@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sriram Venkataraju — IoT & Industry 4.0 Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0e16;
+  --bg-2:#12131d;
+  --card:#15161f;
+  --card-2:#1a1b26;
+  --input:#1c1d28;
+  --brd:rgba(255,255,255,.07);
+  --green:#5479d6;
+  --green-d:#3f5cae;
+  --ink:#eceef3;
+  --muted:#8c8e9e;
+  --dim:#63677a;
+  --faint:rgba(255,255,255,.07);
+  --shadow:0 24px 60px rgba(0,0,0,.5);
+  --glow:0 12px 40px rgba(84,121,214,.35);
+}
+html[data-theme="light"]{
+  --bg:#eef1f7;
+  --bg-2:#ffffff;
+  --card:#ffffff;
+  --card-2:#f2f5fb;
+  --input:#eef1f8;
+  --brd:rgba(22,32,60,.10);
+  --green:#3f5cae;
+  --green-d:#33488f;
+  --ink:#18233a;
+  --muted:#5a6478;
+  --dim:#8b94a8;
+  --faint:rgba(63,92,174,.14);
+  --shadow:0 24px 60px rgba(40,60,110,.14);
+  --glow:0 12px 34px rgba(63,92,174,.26);
+}
+html,body{transition:background .4s ease,color .4s ease;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Poppins',"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;overflow-x:hidden;}
+h1,h2,h3,.logo,.hero h1,.sec-title{font-family:'Space Grotesk','Poppins',sans-serif;}
+.wrap{max-width:1120px;margin:0 auto;padding:0 26px;}
+.green{color:var(--green);}
+section{padding:90px 0;position:relative;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.show{opacity:1;transform:none;}
+
+/* dotted decoration */
+.dots{background-image:radial-gradient(var(--green) 1.6px,transparent 1.6px);background-size:16px 16px;opacity:.5;}
+
+/* ---------- NAV ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:30;transition:background .35s,box-shadow .35s,padding .3s;padding:20px 0;}
+nav.scrolled{background:var(--bg-2);box-shadow:0 6px 24px rgba(0,0,0,.4);padding:12px 0;}
+.nav-in{display:flex;align-items:center;justify-content:space-between;}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.15rem;}
+.logo .mark{width:34px;height:34px;border-radius:9px;background:var(--green);color:#ffffff;display:grid;place-items:center;font-weight:800;}
+.nav-links{display:flex;gap:30px;align-items:center;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:500;transition:color .25s;}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);}
+.nav-links a.btn-pill{background:var(--green);color:#ffffff;padding:9px 22px;border-radius:100px;font-weight:600;}
+.nav-links a.btn-pill:hover{background:var(--green-d);color:#ffffff;}
+.menu-toggle{display:none;background:none;border:none;color:var(--ink);font-size:1.6rem;cursor:pointer;}
+.nav-right{display:flex;align-items:center;gap:16px;}
+.theme-toggle{background:var(--card);border:1px solid var(--brd);color:var(--ink);width:40px;height:40px;border-radius:11px;cursor:pointer;font-size:1rem;display:grid;place-items:center;transition:transform .35s,background .3s,border-color .3s;}
+.theme-toggle:hover{transform:rotate(18deg) scale(1.06);border-color:var(--green);}
+/* light-theme fine-tuning */
+html[data-theme="light"] .hero-illus g[fill="#191a24"]{fill:#e9edf6;stroke:rgba(22,32,60,.14);}
+html[data-theme="light"] .ap-bg{background:radial-gradient(115% 90% at 50% 32%,rgba(63,92,174,.18),rgba(225,231,244,.55) 55%,transparent 80%);}
+html[data-theme="light"] .about-photo img{filter:contrast(1.02) drop-shadow(0 18px 36px rgba(40,60,110,.22));}
+html[data-theme="light"] nav.scrolled{box-shadow:0 6px 24px rgba(40,60,110,.1);}
+
+/* ---------- HERO ---------- */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:90px;position:relative;overflow:hidden;}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center;width:100%;}
+.hero .hello{color:var(--ink);font-weight:600;margin-bottom:6px;}
+.hero h1{font-size:clamp(2.2rem,5vw,3.3rem);font-weight:800;line-height:1.15;margin-bottom:8px;}
+.hero h1 .name{color:var(--green);}
+.hero h2{font-size:clamp(1.2rem,2.6vw,1.7rem);font-weight:700;color:var(--ink);margin-bottom:18px;}
+.hero p{color:var(--muted);max-width:440px;margin-bottom:28px;}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 30px;border-radius:100px;font-weight:600;font-size:.95rem;cursor:pointer;text-decoration:none;border:none;transition:transform .25s,box-shadow .25s,background .25s;}
+.btn-green{background:var(--green);color:#ffffff;box-shadow:var(--glow);}
+.btn-green:hover{transform:translateY(-3px);background:var(--green-d);}
+.hero-photo-wrap{position:relative;display:flex;justify-content:center;align-items:center;}
+.hero-dots{position:absolute;top:8%;right:0;width:120px;height:120px;z-index:1;}
+.hero-blob{position:absolute;left:-60px;top:20%;width:220px;height:220px;background:radial-gradient(circle,rgba(84,121,214,.18),transparent 70%);filter:blur(20px);z-index:0;}
+.hero-illus{width:min(440px,90vw);position:relative;z-index:2;animation:floaty 6s ease-in-out infinite;}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.hero-illus .orbit{transform-origin:200px 200px;animation:orbitspin 46s linear infinite;}
+@keyframes orbitspin{to{transform:rotate(360deg)}}
+
+/* ---------- SECTION HEADINGS ---------- */
+.sec-title{text-align:center;font-size:clamp(1.6rem,3.6vw,2.2rem);font-weight:800;margin-bottom:8px;}
+.sec-sub{text-align:center;color:var(--muted);max-width:520px;margin:0 auto 50px;}
+.center-head{margin-bottom:46px;}
+
+/* ---------- SERVICES ---------- */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.svc-item{opacity:0;transform:translateY(26px);}
+.svc-item.show{animation:svcIn .55s ease forwards;}
+@keyframes svcIn{to{opacity:1;transform:none}}
+.svc-item:nth-child(1){animation-delay:.05s}.svc-item:nth-child(2){animation-delay:.1s}.svc-item:nth-child(3){animation-delay:.15s}
+.svc-item:nth-child(4){animation-delay:.2s}.svc-item:nth-child(5){animation-delay:.25s}.svc-item:nth-child(6){animation-delay:.3s}
+.svc-card{height:100%;background:var(--card);border:1px solid var(--brd);border-radius:16px;padding:30px 26px;transition:transform .3s ease,border-color .3s ease,background .3s ease;}
+.svc-card:hover{transform:translateY(-6px);border-color:rgba(84,121,214,.45);background:var(--card-2);}
+.svc-ic{width:58px;height:58px;border-radius:14px;background:var(--bg-2);display:grid;place-items:center;color:var(--green);margin-bottom:20px;transition:background .3s ease,color .3s ease;}
+.svc-ic svg{width:28px;height:28px;}
+.svc-card:hover .svc-ic{background:var(--green);color:#ffffff;}
+.svc-card h3{font-size:1.12rem;margin-bottom:9px;}
+.svc-card p{color:var(--muted);font-size:.88rem;line-height:1.6;}
+.svc-arrow{display:none;}
+
+/* ---------- ABOUT ---------- */
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center;}
+.about-photo{position:relative;display:flex;justify-content:center;align-items:center;min-height:460px;}
+.ap-bg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:100%;height:100%;border-radius:26px;background:radial-gradient(115% 90% at 50% 32%,rgba(84,121,214,.26),rgba(26,27,38,.45) 55%,transparent 80%);-webkit-mask-image:radial-gradient(closest-side,#000 55%,transparent 100%);mask-image:radial-gradient(closest-side,#000 55%,transparent 100%);filter:blur(12px);}
+.ap-glow{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);width:80%;height:70%;background:radial-gradient(circle,rgba(84,121,214,.42),transparent 66%);filter:blur(40px);}
+.about-photo img{position:relative;z-index:2;width:min(390px,86%);height:min(540px,62vh);object-fit:cover;object-position:top center;
+  -webkit-mask-image:linear-gradient(to bottom,#000 64%,transparent 97%);
+          mask-image:linear-gradient(to bottom,#000 64%,transparent 97%);
+  filter:brightness(.82) drop-shadow(0 18px 36px rgba(0,0,0,.4));}
+.about h2{font-size:clamp(1.6rem,3.4vw,2.1rem);font-weight:700;margin-bottom:16px;color:var(--green);}
+.about p{color:var(--muted);margin-bottom:16px;}
+.about-stats{display:flex;gap:40px;margin:24px 0 20px;}
+.about-stat{display:flex;gap:12px;align-items:center;}
+.about-stat .ic{width:46px;height:46px;border-radius:12px;background:var(--card);border:1px solid var(--brd);display:grid;place-items:center;color:var(--green);}
+.about-stat .ic svg{width:22px;height:22px;}
+.about-stat b{font-size:1.5rem;display:block;line-height:1;}
+.about-stat span{color:var(--muted);font-size:.82rem;}
+
+/* skills marquee */
+.skills-band{margin-top:60px;}
+.skills-head{text-align:center;color:var(--muted);font-size:.78rem;letter-spacing:3px;text-transform:uppercase;font-weight:700;margin-bottom:26px;}
+.skills-head b{color:var(--green);}
+.marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);}
+.mrow{display:flex;gap:14px;width:max-content;animation:marq 32s linear infinite;}
+.mrow.r2{margin-top:14px;animation-duration:40s;animation-direction:reverse;}
+.marquee:hover .mrow{animation-play-state:paused;}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mtag{display:inline-flex;align-items:center;gap:9px;padding:11px 19px;border-radius:11px;background:var(--card);border:1px solid var(--brd);font-size:.9rem;font-weight:500;color:var(--muted);white-space:nowrap;flex:none;transition:border-color .3s,color .3s,background .3s,transform .3s;}
+.mtag::before{content:"";width:6px;height:6px;border-radius:1px;background:var(--green);transform:rotate(45deg);flex:none;box-shadow:0 0 8px rgba(84,121,214,.6);}
+.mtag:hover{border-color:rgba(84,121,214,.55);color:var(--ink);background:var(--card-2);transform:translateY(-3px);}
+
+/* ---------- EDUCATION & EXPERIENCE ---------- */
+.eduwork{display:grid;grid-template-columns:1fr 1fr;gap:54px;max-width:980px;margin:0 auto;}
+.tl-head{display:flex;align-items:center;gap:13px;margin-bottom:30px;}
+.tl-head .ic{width:44px;height:44px;border-radius:12px;background:rgba(84,121,214,.1);border:1px solid rgba(84,121,214,.25);display:grid;place-items:center;color:var(--green);flex:none;}
+.tl-head .ic svg{width:22px;height:22px;}
+.tl-head h3{font-size:1.22rem;font-weight:700;}
+.tl{position:relative;padding-left:26px;}
+.tl::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--green),rgba(84,121,214,.12));}
+.tl-row{position:relative;padding-bottom:28px;}
+.tl-row:last-child{padding-bottom:0;}
+.tl-row .dot{position:absolute;left:-26px;top:4px;width:13px;height:13px;border-radius:50%;background:var(--bg);border:2px solid var(--green);box-shadow:0 0 0 4px rgba(84,121,214,.1);transition:transform .3s,box-shadow .3s;}
+.tl-row:hover .dot{transform:scale(1.28);box-shadow:0 0 0 5px rgba(84,121,214,.18),0 0 14px rgba(84,121,214,.5);}
+.tl-row .yr{color:var(--dim);font-weight:500;font-size:.8rem;letter-spacing:.3px;margin-bottom:5px;}
+.tl-row h4{font-size:1.02rem;margin-bottom:3px;}
+.tl-row .sub{color:var(--green);font-weight:600;font-size:.85rem;margin-bottom:6px;}
+.tl-row a.sub{display:inline-flex;align-items:center;gap:5px;text-decoration:none;transition:color .25s,gap .25s;}
+.tl-row a.sub svg{width:12px;height:12px;opacity:.75;}
+.tl-row a.sub:hover{color:#8aa4e8;gap:8px;}
+.tl-row p{color:var(--muted);font-size:.85rem;line-height:1.5;}
+
+/* ---------- PORTFOLIO ---------- */
+.port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.port-item{opacity:0;transform:translateY(32px);}
+.port-item.show{animation:svcIn .6s ease forwards;}
+.port-item:nth-child(1){animation-delay:.05s}.port-item:nth-child(2){animation-delay:.12s}.port-item:nth-child(3){animation-delay:.19s}
+.port-item:nth-child(4){animation-delay:.26s}.port-item:nth-child(5){animation-delay:.33s}.port-item:nth-child(6){animation-delay:.4s}
+.port{position:relative;background:var(--card);border:1px solid var(--brd);border-radius:16px;overflow:hidden;padding:28px 26px 30px;transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .4s,box-shadow .4s;}
+.port::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),transparent);transform:scaleX(0);transform-origin:left;transition:transform .45s;}
+.port:hover::after{transform:scaleX(1);}
+.port .top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:22px;}
+.port .ic{width:54px;height:54px;border-radius:14px;background:rgba(84,121,214,.1);border:1px solid rgba(84,121,214,.22);display:grid;place-items:center;color:var(--green);transition:background .35s,color .35s,transform .5s;}
+.port .ic svg{width:26px;height:26px;}
+.port .num{font-family:'Space Grotesk',sans-serif;font-size:2.4rem;font-weight:700;line-height:1;color:var(--faint);letter-spacing:-1px;}
+.port .cat{display:inline-block;font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:9px;}
+.port h3{font-size:1.14rem;margin-bottom:9px;}
+.port p{color:var(--muted);font-size:.86rem;line-height:1.55;}
+.port .go{display:inline-flex;align-items:center;gap:7px;margin-top:16px;color:var(--green);font-size:.82rem;font-weight:600;opacity:0;transform:translateX(-6px);transition:opacity .35s,transform .35s;}
+.port:hover .go{opacity:1;transform:none;}
+.port:hover{transform:translateY(-8px);border-color:rgba(84,121,214,.45);box-shadow:0 22px 46px rgba(0,0,0,.4);}
+.port:hover .ic{background:var(--green);color:#ffffff;transform:rotate(-6deg);}
+
+/* ---------- QUOTE ---------- */
+.quote-card{position:relative;max-width:900px;margin:0 auto;background:linear-gradient(160deg,var(--card),var(--bg-2));border:1px solid var(--brd);border-radius:26px;padding:62px 56px 54px;text-align:center;overflow:hidden;}
+.quote-card .watermark{position:absolute;top:-46px;right:26px;font-family:Georgia,serif;font-size:15rem;line-height:1;color:rgba(84,121,214,.06);pointer-events:none;user-select:none;}
+.quote-card .qglow{position:absolute;top:-50px;left:50%;transform:translateX(-50%);width:60%;height:220px;background:radial-gradient(circle,rgba(84,121,214,.2),transparent 68%);filter:blur(34px);}
+.quote-card .qmark{position:relative;z-index:2;display:inline-grid;place-items:center;width:58px;height:58px;border-radius:50%;background:rgba(84,121,214,.12);border:1px solid rgba(84,121,214,.3);color:var(--green);margin-bottom:26px;}
+.quote-card .qmark svg{width:26px;height:26px;}
+.quote-card .qtext{position:relative;z-index:2;font-size:clamp(1.25rem,2.5vw,1.8rem);font-weight:600;line-height:1.5;color:var(--ink);max-width:760px;margin:0 auto 36px;}
+.quote-card .qtext em{color:var(--green);font-style:normal;}
+.quote-author{position:relative;z-index:2;display:inline-flex;align-items:center;gap:14px;}
+.quote-author img{width:58px;height:58px;border-radius:50%;object-fit:cover;object-position:top center;border:2px solid var(--green);box-shadow:0 0 0 4px rgba(84,121,214,.12);}
+.quote-author .info{text-align:left;}
+.quote-author .info b{display:block;font-size:1rem;}
+.quote-author .info span{color:var(--green);font-size:.85rem;}
+
+
+/* ---------- CONTACT ---------- */
+form.contact{max-width:760px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+form.contact input,form.contact textarea{width:100%;background:var(--input);border:1px solid var(--brd);border-radius:10px;padding:15px 18px;color:var(--ink);font-family:inherit;font-size:.92rem;transition:border-color .25s;}
+form.contact input:focus,form.contact textarea:focus{outline:none;border-color:var(--green);}
+form.contact textarea{grid-column:1/3;min-height:140px;resize:vertical;}
+form.contact .submit-row{grid-column:1/3;text-align:center;}
+form.contact button{margin-top:6px;}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--bg-2);border-top:1px solid var(--brd);padding:56px 0 36px;text-align:center;}
+footer .foot-brand{display:inline-flex;align-items:center;gap:11px;justify-content:center;font-family:'Space Grotesk','Poppins',sans-serif;font-weight:700;font-size:1.35rem;margin-bottom:9px;}
+footer .foot-brand .mark{width:38px;height:38px;border-radius:11px;background:var(--green);color:#ffffff;display:grid;place-items:center;font-weight:800;font-size:.95rem;}
+footer .foot-tag{color:var(--muted);font-size:.92rem;margin-bottom:26px;}
+footer .fnav{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-bottom:26px;}
+footer .fnav a{color:var(--muted);text-decoration:none;font-size:.9rem;position:relative;transition:color .25s;}
+footer .fnav a:hover{color:var(--green);}
+footer .social{display:flex;gap:14px;justify-content:center;margin-bottom:8px;}
+footer .social a{width:46px;height:46px;border-radius:13px;background:var(--card);border:1px solid var(--brd);display:grid;place-items:center;color:var(--muted);text-decoration:none;transition:background .3s,color .3s,transform .3s,border-color .3s;}
+footer .social a svg{width:19px;height:19px;}
+footer .social a:hover{background:var(--green);color:#ffffff;border-color:var(--green);transform:translateY(-4px);box-shadow:var(--glow);}
+footer .foot-divider{height:1px;background:var(--brd);max-width:540px;margin:28px auto 22px;}
+footer .copy{color:var(--dim);font-size:.8rem;}
+
+#toTop{position:fixed;right:22px;bottom:22px;z-index:40;width:46px;height:46px;border-radius:50%;border:none;background:var(--green);color:#ffffff;font-size:1.2rem;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;box-shadow:var(--glow);}
+#toTop.show{opacity:1;pointer-events:auto;}
+#toTop:hover{transform:translateY(-4px);}
+#scrollbar{position:fixed;top:0;left:0;height:3px;z-index:50;background:var(--green);width:0;}
+
+@media(max-width:900px){
+  .hero-grid,.about-grid{grid-template-columns:1fr;text-align:center;}
+  .quote-card{padding:44px 26px 40px;}
+  .hero-photo-wrap{order:-1;margin-bottom:10px;}
+  .hero p{margin-inline:auto;}
+  .about-stats,.skills-wrap{justify-content:center;}
+  .svc-grid,.port-grid,.skills-wrap,.eduwork{grid-template-columns:1fr;}
+  .eduwork{gap:44px;}
+  .nav-links{position:fixed;inset:0 0 0 auto;width:min(260px,80vw);flex-direction:column;justify-content:center;background:var(--bg-2);transform:translateX(100%);transition:transform .35s;box-shadow:var(--shadow);z-index:25;}
+  .nav-links.open{transform:none;}
+  .menu-toggle{display:block;z-index:35;}
+  form.contact{grid-template-columns:1fr;}
+  form.contact textarea,form.contact .submit-row{grid-column:1;}
+}
+</style>
+</head>
+<body>
+<div id="scrollbar"></div>
+
+<nav id="nav">
+  <div class="wrap nav-in">
+    <div class="logo"><span class="mark">SV</span> Sriram</div>
+    <div class="nav-right">
+      <div class="nav-links" id="navLinks">
+        <a href="#home" class="active">Home</a>
+        <a href="#services">Service</a>
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact" class="btn-pill">Contact</a>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle light / dark theme" title="Toggle light / dark">🌙</button>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hello">Hello, I'm</div>
+      <h1><span class="name">Sriram Venkataraju</span></h1>
+      <h2>IoT Business Analyst &amp;<br>Industry 4.0 Project Manager</h2>
+      <p>I turn business requirements into connected, data-driven manufacturing — bridging Industrial IoT, ERP integration and embedded systems from the edge to the enterprise.</p>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="hero-blob"></div>
+      <div class="dots hero-dots"></div>
+      <svg class="hero-illus" viewBox="0 0 400 400" role="img" aria-label="Industrial IoT and Industry 4.0 connected ecosystem illustration">
+        <defs>
+          <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#5479d6" stop-opacity=".30"/>
+            <stop offset="70%" stop-color="#5479d6" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="hex" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#7592e0"/>
+            <stop offset="100%" stop-color="#3f5cae"/>
+          </linearGradient>
+        </defs>
+        <circle cx="200" cy="200" r="185" fill="url(#glow)"/>
+        <g stroke="#39508f" stroke-width="1.8">
+          <line x1="200" y1="200" x2="200" y2="52"/>
+          <line x1="200" y1="200" x2="328" y2="126"/>
+          <line x1="200" y1="200" x2="328" y2="274"/>
+          <line x1="200" y1="200" x2="200" y2="348"/>
+          <line x1="200" y1="200" x2="72" y2="274"/>
+          <line x1="200" y1="200" x2="72" y2="126"/>
+        </g>
+        <circle class="orbit" cx="200" cy="200" r="150" fill="none" stroke="#5479d6" stroke-opacity=".4" stroke-width="1.5" stroke-dasharray="2 10" stroke-linecap="round"/>
+        <g fill="#191a24" stroke="#363a4d" stroke-width="1.5">
+          <circle cx="200" cy="52" r="33"/><circle cx="328" cy="126" r="33"/><circle cx="328" cy="274" r="33"/>
+          <circle cx="200" cy="348" r="33"/><circle cx="72" cy="274" r="33"/><circle cx="72" cy="126" r="33"/>
+        </g>
+        <g fill="none" stroke="#7592e0" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <g transform="translate(200,52) scale(1.3) translate(-12,-12)"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></g>
+          <g transform="translate(328,126) scale(1.15) translate(-12,-12)"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></g>
+          <g transform="translate(328,274) scale(1.32) translate(-12,-12)"><line x1="18" y1="20" x2="18" y2="9"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></g>
+          <g transform="translate(200,348) scale(1.28) translate(-12,-12)"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></g>
+          <g transform="translate(72,274) scale(1.28) translate(-12,-12)"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></g>
+          <g transform="translate(72,126) scale(1.26) translate(-12,-12)"><path d="M4 21V11l4.6 2.9V11l4.6 2.9V7h4.8v14z"/><line x1="3" y1="21" x2="21" y2="21"/><path d="M8 21v-3h4v3"/></g>
+        </g>
+        <polygon points="266,200 233,257 167,257 134,200 167,143 233,143" fill="url(#hex)"/>
+        <g transform="translate(200,200) scale(1.75) translate(-12,-12)" fill="none" stroke="#0c1510" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="4" width="16" height="16" rx="2.5"/>
+          <rect x="9" y="9" width="6" height="6" rx="1" fill="#0c1510"/>
+          <path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <h2 class="sec-title reveal">What I do?</h2>
+    <p class="sec-sub reveal">Services I offer across IoT, Industry 4.0 and project delivery</p>
+    <div class="svc-grid">
+      <div class="svc-item"><div class="svc-card"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></div><h3>Business Analysis</h3><p>Requirement gathering, URS/FRD preparation, process mapping and stakeholder management.</p><span class="svc-arrow">→</span></div></div>
+      <div class="svc-item"><div class="svc-card"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M7 18h.01"/><path d="M12 18h.01"/><path d="M17 18h.01"/></svg></div><h3>Industry 4.0 &amp; IIoT</h3><p>M2M data collection, connected factories and real-time manufacturing visibility.</p><span class="svc-arrow">→</span></div></div>
+      <div class="svc-item"><div class="svc-card"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg></div><h3>ERP / MES Integration</h3><p>Bridging machines to enterprise systems for closed-loop production tracking.</p><span class="svc-arrow">→</span></div></div>
+      <div class="svc-item"><div class="svc-card"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg></div><h3>Embedded Firmware</h3><p>Firmware for ESP32, STM32 &amp; Raspberry Pi with BLE, Modbus, MQTT and OPC UA.</p><span class="svc-arrow">→</span></div></div>
+      <div class="svc-item"><div class="svc-card"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 7v9"/><path d="M12 7v5"/><path d="M16 7v3"/></svg></div><h3>Project Management</h3><p>Vendor evaluation, scheduling, risk tracking and delivery of digital initiatives.</p><span class="svc-arrow">→</span></div></div>
+      <div class="svc-item"><div class="svc-card"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="1"/><path d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0"/></svg></div><h3>Automation &amp; Vision</h3><p>Robotic automation, machine-vision inspection and quality-assurance systems.</p><span class="svc-arrow">→</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-photo reveal">
+      <span class="ap-bg"></span>
+      <span class="ap-glow"></span>
+      <img src="portfolio_cutout.png" alt="Sriram Venkataraju">
+    </div>
+    <div class="about reveal">
+      <h2>About Me</h2>
+      <p>I'm an <b style="color:var(--ink)">IoT Business Analyst &amp; Project Manager</b> with a rare mix of hands-on engineering and business strategy. My career began in firmware — building embedded systems for precision instruments at a German-owned OEM — and grew into leading full-scale Industry 4.0 and digital-transformation programmes on the factory floor.</p>
+      <p>Today I gather requirements, prepare URS/FRDs, evaluate vendors, and drive M2M data collection and ERP integration. Backed by an MBA in Business Analytics, I ship solutions on scope, on schedule, and with measurable impact.</p>
+      <div class="about-stats">
+        <div class="about-stat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div><b>4+</b><span>Years Experience</span></div></div>
+        <div class="about-stat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div><div><b>10+</b><span>Projects Delivered</span></div></div>
+      </div>
+      <a href="#portfolio" class="btn btn-green">Read More →</a>
+    </div>
+  </div>
+
+  <div class="wrap skills-band reveal">
+    <div class="skills-head">Core <b>Skills</b> &amp; Tools</div>
+    <div class="marquee">
+      <div class="mrow">
+        <span class="mtag">Business Analysis</span><span class="mtag">Requirement Gathering</span><span class="mtag">URS / FRD</span><span class="mtag">Industry 4.0</span><span class="mtag">IIoT</span><span class="mtag">M2M</span><span class="mtag">ERP Integration</span>
+        <span class="mtag">Business Analysis</span><span class="mtag">Requirement Gathering</span><span class="mtag">URS / FRD</span><span class="mtag">Industry 4.0</span><span class="mtag">IIoT</span><span class="mtag">M2M</span><span class="mtag">ERP Integration</span>
+      </div>
+      <div class="mrow r2">
+        <span class="mtag">MES / OEE</span><span class="mtag">Embedded Firmware</span><span class="mtag">ESP32 / STM32</span><span class="mtag">Modbus / MQTT</span><span class="mtag">OPC UA / BLE</span><span class="mtag">Project Management</span><span class="mtag">Vendor Management</span><span class="mtag">Automation</span>
+        <span class="mtag">MES / OEE</span><span class="mtag">Embedded Firmware</span><span class="mtag">ESP32 / STM32</span><span class="mtag">Modbus / MQTT</span><span class="mtag">OPC UA / BLE</span><span class="mtag">Project Management</span><span class="mtag">Vendor Management</span><span class="mtag">Automation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="wrap">
+    <h2 class="sec-title reveal">Education &amp; Experience</h2>
+    <p class="sec-sub reveal">My academic background and professional journey</p>
+    <div class="eduwork">
+      <div class="reveal">
+        <div class="tl-head"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.57 3.91a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span><h3>Education</h3></div>
+        <div class="tl">
+          <div class="tl-row"><span class="dot"></span><div class="yr">2023 – 2025 · CGPA 8.5</div><h4>MBA – Business Analytics</h4><div class="sub">SASTRA Deemed University, Tanjore</div><p>Data-driven business strategy with technical decision-making.</p></div>
+          <div class="tl-row"><span class="dot"></span><div class="yr">2017 – 2021 · CGPA 7.42</div><h4>B.E. – Electronics &amp; Communication</h4><div class="sub">St. Joseph's Institute of Technology, Chennai</div><p>Foundation in electronics, embedded systems and communication.</p></div>
+          <div class="tl-row"><span class="dot"></span><div class="yr">2017 · Class XII</div><h4>HSC — Higher Secondary</h4><div class="sub">Silver Jubilee Matric Hr. Sec. School</div><p>Mathematics &amp; science stream, Mayiladuthurai.</p></div>
+          <div class="tl-row"><span class="dot"></span><div class="yr">2015 · Class X</div><h4>SSLC — Secondary</h4><div class="sub">Sri Kanchi Sankara Vidhyalaya</div><p>Secondary schooling, Mayiladuthurai.</p></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="tl-head"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span><h3>Experience</h3></div>
+        <div class="tl">
+          <div class="tl-row"><span class="dot"></span><div class="yr">Nov 2024 – Present · Chennai</div><h4>Assistant Manager – Projects</h4><a class="sub" href="https://sujarubber.com/" target="_blank" rel="noopener">Suja Shoei Industries Pvt. Ltd. <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a><p>Leading Industry 4.0, ERP integration and M2M data-collection initiatives across manufacturing.</p></div>
+          <div class="tl-row"><span class="dot"></span><div class="yr">Feb 2022 – Mar 2024 · Chennai</div><h4>Project Engineer – Firmware</h4><a class="sub" href="https://marlensoft.com/" target="_blank" rel="noopener">Marlensoft Pvt. Ltd. — Kern &amp; Sohn GmbH <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a><p>Embedded firmware for IoT weighing devices with BLE, RS232 and SPIFFS storage.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="wrap">
+    <h2 class="sec-title reveal">Working <span class="green">Portfolio</span></h2>
+    <p class="sec-sub reveal">Key projects across Industry 4.0, IoT and embedded systems</p>
+    <div class="port-grid">
+      <div class="port-item"><div class="port">
+        <div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14 16 10"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg></span><span class="num">01</span></div>
+        <span class="cat">Industry 4.0</span><h3>Shop-Floor Digitisation &amp; OEE</h3>
+        <p>Connected machines and live dashboards delivering real-time OEE and production visibility across the plant.</p>
+        <span class="go">View project →</span>
+      </div></div>
+      <div class="port-item"><div class="port">
+        <div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg></span><span class="num">02</span></div>
+        <span class="cat">Integration</span><h3>ERP Integration &amp; M2M Data</h3>
+        <p>Machine data wired into enterprise ERP for real-time reporting and closed-loop production tracking.</p>
+        <span class="go">View project →</span>
+      </div></div>
+      <div class="port-item"><div class="port">
+        <div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></span><span class="num">03</span></div>
+        <span class="cat">Quality</span><h3>Vision Inspection &amp; CT Validation</h3>
+        <p>Machine-vision inspection and CT-scan validation deployed for automated quality assurance.</p>
+        <span class="go">View project →</span>
+      </div></div>
+      <div class="port-item"><div class="port">
+        <div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></span><span class="num">04</span></div>
+        <span class="cat">Embedded</span><h3>Smart Weighing-Scale Gateway</h3>
+        <p>Firmware turning incompatible scales into BLE/Wi-Fi connected devices streaming JSON to the cloud.</p>
+        <span class="go">View project →</span>
+      </div></div>
+      <div class="port-item"><div class="port">
+        <div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span><span class="num">05</span></div>
+        <span class="cat">Medical IoT</span><h3>Medical Data Consolidator</h3>
+        <p>Scale, barcode and RTC data merged into one JSON payload with server sync and SPIFFS storage.</p>
+        <span class="go">View project →</span>
+      </div></div>
+      <div class="port-item"><div class="port">
+        <div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg></span><span class="num">06</span></div>
+        <span class="cat">Robotics</span><h3>UV Sanitization Line-Follower</h3>
+        <p>Autonomous robot sanitizing public spaces via UV radiation with line-following navigation.</p>
+        <span class="go">View project →</span>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section id="quote">
+  <div class="wrap">
+    <div class="quote-card reveal">
+      <span class="watermark">&ldquo;</span>
+      <span class="qglow"></span>
+      <span class="qmark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.98 3v7.39c0 5.7-3.73 9.57-8.98 10.61l-1-2.15c2.43-.92 4-3.64 4-5.85H0V3h9.98zm14.02 0v7.39c0 5.7-3.75 9.57-9 10.61l-1-2.15c2.43-.92 4-3.64 4-5.85h-3.98V3H24z"/></svg></span>
+      <p class="qtext">I bridge the shop floor and the boardroom — translating business goals into <em>connected, data-driven manufacturing</em> that ships on scope and on schedule.</p>
+      <div class="quote-author">
+        <img src="headshot_src.png" alt="Sriram Venkataraju">
+        <div class="info"><b>Sriram Venkataraju</b><span>Assistant Manager – Projects</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <h2 class="sec-title reveal">Get in Touch</h2>
+    <p class="sec-sub reveal">Have a project or a role in mind? Let's talk.</p>
+    <form class="contact reveal" id="contactForm">
+      <input type="text" id="cName" placeholder="Name" required>
+      <input type="email" id="cEmail" placeholder="Email" required>
+      <input type="text" id="cPhone" placeholder="Phone">
+      <input type="text" id="cService" placeholder="Service">
+      <textarea id="cMsg" placeholder="Message" required></textarea>
+      <div class="submit-row"><button type="submit" class="btn btn-green">Send Message →</button></div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-brand"><span class="mark">SV</span></div>
+    <p class="foot-tag">Chennai, India</p>
+    <div class="fnav">
+      <a href="#home">Home</a>
+      <a href="#services">Service</a>
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="social">
+      <a href="mailto:sriram8523@gmail.com" title="Email" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+      <a href="https://www.linkedin.com/in/sriram-venkataraju-4951421b1/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
+    </div>
+    <div class="foot-divider"></div>
+    <div class="copy">© 2026 Sriram Venkataraju</div>
+  </div>
+</footer>
+
+<button id="toTop" title="Back to top">↑</button>
+
+<script>
+/* theme toggle */
+const themeToggle=document.getElementById('themeToggle'),root=document.documentElement;
+function setTheme(t){root.setAttribute('data-theme',t);themeToggle.textContent=t==='light'?'☀️':'🌙';localStorage.setItem('sv-theme',t);}
+setTheme(localStorage.getItem('sv-theme')||'dark');
+themeToggle.onclick=()=>setTheme(root.getAttribute('data-theme')==='light'?'dark':'light');
+
+/* nav scroll + progress + active link + back-to-top */
+const nav=document.getElementById('nav'),bar=document.getElementById('scrollbar'),toTop=document.getElementById('toTop');
+const secs=[...document.querySelectorAll('section[id],header[id]')];
+const links=[...document.querySelectorAll('.nav-links a')];
+function onScroll(){
+  const y=scrollY;
+  nav.classList.toggle('scrolled',y>40);
+  toTop.classList.toggle('show',y>600);
+  bar.style.width=(y/(document.body.scrollHeight-innerHeight)*100)+'%';
+  let cur='home';for(const s of secs){if(s.offsetTop-140<=y)cur=s.id;}
+  links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll);onScroll();
+toTop.onclick=()=>scrollTo({top:0,behavior:'smooth'});
+
+/* mobile menu */
+const navLinks=document.getElementById('navLinks'),menuToggle=document.getElementById('menuToggle');
+menuToggle.onclick=()=>navLinks.classList.toggle('open');
+navLinks.querySelectorAll('a').forEach(a=>a.onclick=()=>navLinks.classList.remove('open'));
+
+/* scroll reveal + skill bars */
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{
+  if(e.isIntersecting){
+    e.target.classList.add('show');
+    e.target.querySelectorAll?.('.fill').forEach(f=>f.style.width=f.dataset.w);
+    io.unobserve(e.target);
+  }});},{threshold:.14});
+document.querySelectorAll('.reveal, .svc-item, .port-item').forEach(el=>io.observe(el));
+
+/* contact form -> mailto */
+document.getElementById('contactForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const n=cName.value,em=cEmail.value,ph=cPhone.value,sv=cService.value,ms=cMsg.value;
+  const body=`Name: ${n}%0AEmail: ${em}%0APhone: ${ph}%0AService: ${sv}%0A%0A${encodeURIComponent(ms)}`;
+  window.location.href=`mailto:sriram8523@gmail.com?subject=${encodeURIComponent('Portfolio enquiry from '+n)}&body=${body}`;
+});
+</script>
+</body>
+</html>
